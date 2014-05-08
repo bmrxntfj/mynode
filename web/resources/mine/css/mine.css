@@ -1,0 +1,20 @@
+.cycle
+{
+	border-radius: 50%;
+	background-color:lightseagreen;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 16px 8px 16px 8px !important;
+	color: #fff;
+}
+.cycle1
+{
+	border-radius: 50%;
+	background-color:#35aa47;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 16px 8px 16px 8px !important;
+	color: #fff;
+}
