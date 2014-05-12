@@ -19,7 +19,22 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$.post('/user/query', {start:1,limit:2}, function (result) {
-				
+				var data=eval('('+result+')');
+
+				var htmls=[];
+				$.each(data.result,function(i,item){
+					var html=[
+						'<tr>',
+						'	<td>{Id}</td>',
+						'	<td>{UserName}</td>',
+						'	<td>{RealName}</td>',
+						'	<td>{Password}</td>',
+						'</tr>'
+					].join('');
+					htmls.push(html.apply(item));
+				});
+				var tbody=$('#userlist tbody');
+				tbody.html(htmls.join(''));
 			});
 		})
 	</script>
@@ -40,5 +55,14 @@
 		<input name="myfile" type="file">
 		<button type="submit">submit</button>
 	</form>
+	<table class='table' id='userlist'>
+		<thead>
+			<td style="width:100px;">Id</td>
+			<td style="width:200px;">姓名</td>
+			<td style="width:200px;">帐号</td>
+			<td style="width:250px;">密码</td>
+		</thead>
+		<tbody></tbody>
+	</table>
 </body>
 </html>

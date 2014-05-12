@@ -12,7 +12,7 @@ exports.query=function (start,limit,orders,filter,callback) {
 		console.log('connected...');
 		
 	    var request = new sql.Request(connection); // or: var request = connection.request();
-	    request.query('select top 1 * from dbo.[User]', function(err, recordset) {
+	    request.query('select top 20 * from dbo.[User]', function(err, recordset) {
 	        // ... error checks
 
 	        console.log('executed...');
