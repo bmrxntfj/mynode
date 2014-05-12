@@ -1,10 +1,30 @@
+var sql = require('mssql'); 
+
 exports.query=function (start,limit,orders,filter,callback) {
-	console.log(start);
-	console.log(limit);
-	// console.log(orders);
-	// console.log(filter);
+	var config = {
+	    user: 'sa',
+	    password: '3h9TGyGG',
+	    server: '172.18.217.101\\SQL2008', // You can use 'localhost\\instance' to connect to named instance
+	    database: 'DriverTraining'
+	};
+
+	var connection = new sql.Connection(config, function(err) {
+		console.log('connected...');
+		
+	    var request = new sql.Request(connection); // or: var request = connection.request();
+	    request.query('select * from dbo.[User]', function(err, recordset) {
+	        // ... error checks
+
+	        console.log('executed...');
+	        if(err){console.dir(err);}
+	        console.dir(recordset);
+
+	        callback({success:true,totalCount:2,result:recordset});
+	    });
+
+	});
+
 	
-	callback({success:true,totalCount:2,result:[{name:'bbq',age:24},{name:'kkq',age:22}]});
 }
 exports.create=function(user){
 	console.log('create goo....');
